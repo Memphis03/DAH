@@ -14,7 +14,7 @@ def compute_daily_stock(clean_products_file: str):
     df = pd.read_csv(clean_products_file)
     df["date"] = pd.to_datetime(df["date"], errors="coerce")
     if "stock" not in df.columns:
-        print("⚠️ La colonne 'stock' est absente du fichier produits nettoyé.")
+        print("La colonne 'stock' est absente du fichier produits nettoyé.")
         return None
     df["stock"] = pd.to_numeric(df["stock"], errors="coerce").fillna(0)
 
@@ -26,7 +26,7 @@ def compute_daily_stock(clean_products_file: str):
     os.makedirs(out_dir, exist_ok=True)
     out_path = os.path.join(out_dir, "daily_stock.csv")
     daily_stock.to_csv(out_path, index=False)
-    print(f"📊 Stock journalier sauvegardé : {out_path}")
+    print(f"Stock journalier sauvegardé : {out_path}")
 
     return out_path
 
@@ -35,7 +35,7 @@ def compute_new_customers(clean_clients_file: str):
     df = pd.read_csv(clean_clients_file)
     df["date"] = pd.to_datetime(df["date"], errors="coerce")
     if "customer_id" not in df.columns:
-        print("⚠️ La colonne 'customer_id' est absente du fichier clients nettoyé.")
+        print("La colonne 'customer_id' est absente du fichier clients nettoyé.")
         return None
     df["customer_id"] = df["customer_id"].astype(str)
     df = df.drop_duplicates(subset=["customer_id", "date"])
@@ -51,7 +51,7 @@ def compute_new_customers(clean_clients_file: str):
     os.makedirs(out_dir, exist_ok=True)
     out_path = os.path.join(out_dir, "new_customers.csv")
     daily_new_customers.to_csv(out_path, index=False)
-    print(f"📊 Nouveaux clients sauvegardés : {out_path}")
+    print(f"Nouveaux clients sauvegardés : {out_path}")
 
     return out_path
 
@@ -60,7 +60,7 @@ def compute_monthly_revenue(clean_orders_file: str):
     df = pd.read_csv(clean_orders_file)
     df["order_date"] = pd.to_datetime(df["order_date"], errors="coerce")
     if "quantity" not in df.columns or "price" not in df.columns:
-        print("⚠️ Les colonnes 'quantity' et/ou 'price' sont absentes du fichier commandes nettoyé.")
+        print("Les colonnes 'quantity' et/ou 'price' sont absentes du fichier commandes nettoyé.")
         return None
     df["quantity"] = pd.to_numeric(df["quantity"], errors="coerce").fillna(0)
     df["price"] = pd.to_numeric(df["price"], errors="coerce").fillna(0)
@@ -76,7 +76,7 @@ def compute_monthly_revenue(clean_orders_file: str):
     os.makedirs(out_dir, exist_ok=True)
     out_path = os.path.join(out_dir, "monthly_revenue.csv")
     monthly_ca.to_csv(out_path, index=False)
-    print(f"📊 Chiffre d’affaires mensuel sauvegardé : {out_path}")
+    print(f"Chiffre d’affaires mensuel sauvegardé : {out_path}")
 
     return out_path
 

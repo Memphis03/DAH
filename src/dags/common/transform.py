@@ -12,7 +12,7 @@ CLEAN_DATA_DIR = os.path.join(BASE_DIR, "data", "cleane_data")
 def transform_products(date: datetime):
     raw_path = os.path.join(RAW_DATA_DIR, "products", str(date.year), str(date.month), f"{date.day}.csv")
     if not os.path.exists(raw_path):
-        print(f"⚠️ Fichier produits brut introuvable : {raw_path}")
+        print(f"Fichier produits brut introuvable : {raw_path}")
         return None
     
     df = pd.read_csv(raw_path)
@@ -31,14 +31,14 @@ def transform_products(date: datetime):
     os.makedirs(out_dir, exist_ok=True) 
     out_path = os.path.join(out_dir, f"{date.day}.csv")
     df.to_csv(out_path, index=False)
-    print(f"✅ Produits nettoyés : {out_path}")
+    print(f"Produits nettoyés : {out_path}")
     return out_path
 
 
 def transform_clients(date: datetime):
     raw_path = os.path.join(RAW_DATA_DIR, "clients", str(date.year), str(date.month), f"{date.day}.csv")
     if not os.path.exists(raw_path):
-        print(f"⚠️ Fichier clients brut introuvable : {raw_path}")
+        print(f"Fichier clients brut introuvable : {raw_path}")
         return None
 
 
@@ -58,14 +58,14 @@ def transform_clients(date: datetime):
     os.makedirs(out_dir, exist_ok=True)
     out_path = os.path.join(out_dir, f"{date.day}.csv")
     df.to_csv(out_path, index=False)
-    print(f"✅ Clients nettoyés : {out_path}")
+    print(f"Clients nettoyés : {out_path}")
     return out_path
 
 
 def transform_orders(date: datetime):
     raw_path = os.path.join(RAW_DATA_DIR, "orders", str(date.year), str(date.month), f"{date.day}.csv")
     if not os.path.exists(raw_path):
-        print(f"⚠️ Fichier commandes brut introuvable : {raw_path}")
+        print(f"Fichier commandes brut introuvable : {raw_path}")
         return None
 
     df = pd.read_csv(raw_path)
@@ -87,7 +87,7 @@ def transform_orders(date: datetime):
     os.makedirs(out_dir, exist_ok=True)
     out_path = os.path.join(out_dir, f"{date.day}.csv")
     df.to_csv(out_path, index=False)
-    print(f"✅ Commandes nettoyées : {out_path}")
+    print(f"Commandes nettoyées : {out_path}")
     return out_path
 
 

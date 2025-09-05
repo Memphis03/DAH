@@ -1,3 +1,3 @@
 # ecommerce-analytics
-les fichier .py dans src
-les fichier .csv dans data 
+les fichiers .py dans src
+les fichiers .csv dans data 
